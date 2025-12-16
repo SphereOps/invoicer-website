@@ -1,0 +1,11 @@
+services:
+  website:
+    build: .
+    container_name: invoicer-website
+    ports:
+      - "4000:3000"
+    volumes:
+      - ./docs:/app/docs:ro
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
