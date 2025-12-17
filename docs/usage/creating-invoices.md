@@ -1,6 +1,6 @@
 # Creating Invoices
 
-Invoicer provides both a web interface and REST API for creating invoices. This guide covers both methods.
+Invoicer provides a web interface for creating invoices. This guide covers how to create invoices using the web interface.
 
 ## Web Interface
 
@@ -43,90 +43,6 @@ Add one or more line items:
 2. Make any necessary adjustments
 3. Click "Save" to store the invoice
 4. Optionally, click "Export PDF" to download a PDF version
-
-## REST API
-
-Create invoices programmatically using the REST API.
-
-### Create Invoice Endpoint
-
-```bash
-POST /api/invoices
-```
-
-### Request Body
-
-```json
-{
-  "invoice_number": "INV-2024-001",
-  "date": "2024-01-15",
-  "due_date": "2024-02-15",
-  "client": {
-    "name": "Acme Corporation",
-    "email": "billing@acme.com",
-    "address": "123 Business St, City, State 12345",
-    "phone": "+1-555-0123"
-  },
-  "items": [
-    {
-      "description": "Web Development Services",
-      "quantity": 10,
-      "unit_price": 125.00,
-      "tax_rate": 0.10
-    },
-    {
-      "description": "Consulting Hours",
-      "quantity": 5,
-      "unit_price": 150.00,
-      "tax_rate": 0.10
-    }
-  ],
-  "notes": "Payment due within 30 days. Thank you for your business!",
-  "payment_terms": "Net 30"
-}
-```
-
-### Example Request
-
-```bash
-curl -X POST http://localhost:8080/api/invoices \
-  -H "Content-Type: application/json" \
-  -d '{
-    "invoice_number": "INV-2024-001",
-    "date": "2024-01-15",
-    "due_date": "2024-02-15",
-    "client": {
-      "name": "Acme Corporation",
-      "email": "billing@acme.com",
-      "address": "123 Business St, City, State 12345"
-    },
-    "items": [
-      {
-        "description": "Web Development Services",
-        "quantity": 10,
-        "unit_price": 125.00,
-        "tax_rate": 0.10
-      }
-    ],
-    "notes": "Payment due within 30 days"
-  }'
-```
-
-### Response
-
-```json
-{
-  "id": "123",
-  "invoice_number": "INV-2024-001",
-  "date": "2024-01-15",
-  "due_date": "2024-02-15",
-  "status": "draft",
-  "subtotal": 1250.00,
-  "tax": 125.00,
-  "total": 1375.00,
-  "created_at": "2024-01-15T10:30:00Z"
-}
-```
 
 ## Invoice Status
 

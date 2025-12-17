@@ -12,10 +12,6 @@ Complete control over your data. Deploy on your own infrastructure with Docker. 
 
 Beautiful, customizable invoice templates that look professional and polished. Choose from multiple templates or create your own.
 
-### REST API
-
-Full-featured REST API for programmatic invoice generation and management. Integrate Invoicer into your existing workflow.
-
 ### PDF Export
 
 Generate high-quality PDF invoices ready for printing or email delivery. All PDFs are generated server-side for optimal quality.

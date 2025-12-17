@@ -1,26 +1,18 @@
+import Link from 'next/link'
+
 export default function ContactPage() {
   return (
     <section className="contact-page">
       <div className="container">
-        <div className="contact-content">
-          <h1>Contact</h1>
-          <p className="contact-intro">
+        <div className="contact-hero">
+          <h1>Get in Touch</h1>
+          <p className="contact-hero-subtitle">
             Have questions, suggestions, or need support? We'd love to hear from you!
           </p>
-          
+        </div>
+
+        <div className="contact-content">
           <div className="contact-methods">
-            <div className="contact-method">
-              <div className="contact-method-icon">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-              <h3>GitHub</h3>
-              <p>Report issues, contribute, or view the source code on GitHub.</p>
-              <a href="https://github.com/yourusername/invoicer" className="btn btn-secondary" target="_blank" rel="noopener noreferrer">Visit GitHub</a>
-            </div>
-            
             <div className="contact-method">
               <div className="contact-method-icon">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,20 +21,57 @@ export default function ContactPage() {
                 </svg>
               </div>
               <h3>Email</h3>
-              <p>For direct inquiries, reach out via email.</p>
-              <a href="mailto:support@invoicer.example" className="btn btn-secondary">Send Email</a>
+              <p>For detailed inquiries, support requests, or general questions.</p>
+              <a href="mailto:support@invoicer.example" className="btn btn-primary">Send Email</a>
+              <p className="contact-detail">support@invoicer.example</p>
             </div>
             
             <div className="contact-method">
               <div className="contact-method-icon">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z" fill="currentColor"/>
+                  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <h3>Documentation</h3>
-              <p>Check out our comprehensive documentation for guides and API reference.</p>
-              <a href="/docs" className="btn btn-secondary">View Docs</a>
+              <h3>GitHub</h3>
+              <p>Report issues, contribute code, or view the source repository.</p>
+              <a href="https://github.com/yourusername/invoicer" className="btn btn-primary" target="_blank" rel="noopener noreferrer">Visit GitHub</a>
+              <p className="contact-detail">github.com/yourusername/invoicer</p>
             </div>
+          </div>
+
+          <div className="contact-info-section">
+            <div className="contact-info-card">
+              <h3>Response Times</h3>
+              <div className="response-times">
+                <div className="response-item">
+                  <span className="response-label">Email:</span>
+                  <span className="response-value">Within 24 hours</span>
+                </div>
+                <div className="response-item">
+                  <span className="response-label">GitHub Issues:</span>
+                  <span className="response-value">Within 48 hours</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="contact-info-card">
+              <h3>What Can We Help With?</h3>
+              <ul className="help-list">
+                <li>Installation and setup assistance</li>
+                <li>Feature requests and suggestions</li>
+                <li>Bug reports and technical issues</li>
+                <li>Documentation improvements</li>
+                <li>General questions about Invoicer</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="contact-cta">
+            <h2>Ready to Get Started?</h2>
+            <p>Check out our documentation to learn how to deploy and use Invoicer.</p>
+            <Link href="/docs" className="btn btn-primary">View Documentation</Link>
           </div>
         </div>
       </div>

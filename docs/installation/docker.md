@@ -10,7 +10,7 @@ Make sure you have Docker and Docker Compose installed on your system.
 
 ```bash
 docker --version
-docker-compose --version
+docker compose --version
 ```
 
 If Docker is not installed, visit the [Docker installation guide](https://docs.docker.com/get-docker/) for your operating system.
@@ -62,7 +62,7 @@ volumes:
 ### Start the Service
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 This will:

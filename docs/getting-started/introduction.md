@@ -8,7 +8,7 @@ Invoicer is a powerful, self-hosted invoice generator that puts you in complete 
 - **Privacy-First**: Your invoices never leave your server
 - **Professional**: Beautiful, customizable invoice templates
 - **Easy Setup**: Get running in minutes with Docker
-- **API Access**: Full REST API for programmatic invoice management
+- **Fast & Efficient**: Lightweight and performant with minimal resource usage
 
 ## What You Can Do
 
@@ -17,9 +17,9 @@ With Invoicer, you can:
 - Create professional invoices with customizable templates
 - Manage clients and invoice history
 - Export invoices as PDFs
-- Access invoices programmatically via REST API
 - Customize branding and invoice fields
 - Track invoice status (draft, sent, paid, overdue)
+- Fast and efficient invoice generation
 
 ## Getting Started
 
