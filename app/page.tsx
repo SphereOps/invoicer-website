@@ -45,6 +45,71 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Problem & Solution Section */}
+      <section className="problem-solution-section">
+        <div className="section-container">
+          <div className="problem-solution-grid">
+            <div className="problem-card">
+              <div className="problem-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3>The Problem</h3>
+              <p>
+                Traditional invoicing leaves you in the dark. Did your client receive the invoice? 
+                Have they viewed it? Is payment on the way? You're left wondering and following up manually.
+              </p>
+              <ul className="problem-list">
+                <li>No visibility into invoice status</li>
+                <li>Endless email follow-ups</li>
+                <li>Uncertainty about payment timing</li>
+                <li>Poor client communication</li>
+              </ul>
+            </div>
+
+            <div className="solution-card">
+              <div className="solution-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3>Our Solution</h3>
+              <p>
+                Invoicer provides real-time tracking of your invoices. Know exactly when your client 
+                views the invoice, and track payment status in real-time.
+              </p>
+              <ul className="solution-list">
+                <li>
+                  <svg className="check-icon" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  Live invoice tracking
+                </li>
+                <li>
+                  <svg className="check-icon" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  "Viewed" notifications
+                </li>
+                <li>
+                  <svg className="check-icon" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  Payment status updates
+                </li>
+                <li>
+                  <svg className="check-icon" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  Automated reminders
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Features Section */}
       <section className="features-section">
         <div className="section-container">
@@ -56,6 +121,18 @@ export default function HomePage() {
           </div>
 
           <div className="features-grid">
+            <div className="feature-card feature-card-highlight">
+              <div className="feature-badge">Core Feature</div>
+              <div className="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+              </div>
+              <h3>Live Invoice Tracking</h3>
+              <p>Know exactly when your invoices are viewed and track payment status in real-time. Get instant notifications when clients interact with your invoices.</p>
+            </div>
+
             <div className="feature-card">
               <div className="feature-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

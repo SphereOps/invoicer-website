@@ -383,6 +383,127 @@ html {
     color: var(--text-muted);
 }
 
+/* Problem & Solution Section */
+.problem-solution-section {
+    padding: 80px 2rem;
+    background: var(--navy-primary);
+    position: relative;
+}
+
+.problem-solution-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.problem-card,
+.solution-card {
+    padding: 2.5rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    background: var(--navy-secondary);
+}
+
+.problem-card {
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+.solution-card {
+    border-color: rgba(16, 185, 129, 0.3);
+    background: linear-gradient(135deg, var(--navy-secondary) 0%, rgba(16, 185, 129, 0.05) 100%);
+}
+
+.problem-icon,
+.solution-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1.25rem;
+}
+
+.problem-icon {
+    color: var(--error);
+}
+
+.solution-icon {
+    color: var(--success);
+}
+
+.problem-card h3,
+.solution-card h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.problem-card p,
+.solution-card p {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.problem-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.problem-list li {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    padding: 0.625rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.problem-list li::before {
+    content: '×';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.25rem;
+    height: 1.25rem;
+    background: rgba(239, 68, 68, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--error);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.solution-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.solution-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    padding: 0.625rem 0;
+    font-weight: 500;
+}
+
+.check-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--success);
+    flex-shrink: 0;
+}
+
 /* Features Section */
 .features-section {
     padding: 100px 2rem;
@@ -423,6 +544,62 @@ html {
     border-radius: 12px;
     border: 1px solid var(--border-color);
     transition: all 0.3s ease;
+    position: relative;
+}
+
+.feature-card-highlight {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, var(--navy-primary) 100%);
+    border-color: var(--accent-blue);
+}
+
+.feature-card-highlight::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-blue-light));
+    border-radius: 12px 12px 0 0;
+}
+
+.feature-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--accent-blue);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.feature-card-highlight::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-blue-light));
+    border-radius: 12px 12px 0 0;
+}
+
+.feature-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--accent-blue);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .feature-card:hover {
@@ -603,6 +780,31 @@ html {
     
     .nav-links {
         display: none;
+    }
+    
+    .problem-solution-section {
+        padding: 60px 1.5rem;
+    }
+    
+    .problem-solution-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .problem-card,
+    .solution-card {
+        padding: 2rem;
+    }
+    
+    .problem-card h3,
+    .solution-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    .problem-icon,
+    .solution-icon {
+        width: 40px;
+        height: 40px;
     }
 }
 
