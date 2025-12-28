@@ -1,0 +1,99 @@
+name: Release and Publish Docker Image
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'  # Triggers on version tags like v1.0.0, v2.1.3, etc.
+  workflow_dispatch:  # Allows manual trigger from GitHub UI
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ghcr.io/sphereops/invoicer
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+      
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Extract metadata (tags, labels)
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.IMAGE_NAME }}
+          tags: |
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+            type=raw,value=latest,enable={{is_default_branch}}
+            
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          platforms: linux/amd64,linux/arm64
+          
+      - name: Generate release notes
+        id: release_notes
+        run: |
+          echo "## 🚀 What's Changed" > release_notes.md
+          echo "" >> release_notes.md
+          echo "### Docker Images" >> release_notes.md
+          echo "" >> release_notes.md
+          echo '```bash' >> release_notes.md
+          echo "docker pull ${{ env.IMAGE_NAME }}:${GITHUB_REF#refs/tags/}" >> release_notes.md
+          echo '```' >> release_notes.md
+          echo "" >> release_notes.md
+          echo "### Quick Start" >> release_notes.md
+          echo "" >> release_notes.md
+          echo '```bash' >> release_notes.md
+          echo "docker run -p 3000:3000 ${{ env.IMAGE_NAME }}:${GITHUB_REF#refs/tags/}" >> release_notes.md
+          echo '```' >> release_notes.md
+          echo "" >> release_notes.md
+          echo "### 📦 Available Platforms" >> release_notes.md
+          echo "- linux/amd64 (x86_64)" >> release_notes.md
+          echo "- linux/arm64 (ARM)" >> release_notes.md
+          echo "" >> release_notes.md
+          echo "### Support" >> release_notes.md
+          echo "- 💬 Join our [Discord Community](https://discord.gg/6mzgrSaTCz)" >> release_notes.md
+          echo "- 📖 Read the [Documentation](https://github.com/sphereops/invoicer#readme)" >> release_notes.md
+          
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          body_path: release_notes.md
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Send Discord notification
+        if: success()
+        run: |
+          if [ -n "${{ secrets.DISCORD_WEBHOOK }}" ]; then
+            curl -H "Content-Type: application/json" \
+              -d "{\"embeds\": [{\"title\": \"🎉 New Invoicer Release: ${GITHUB_REF#refs/tags/}\", \"description\": \"A new version of Invoicer has been released!\n\n\`\`\`docker pull ${{ env.IMAGE_NAME }}:${GITHUB_REF#refs/tags/}\`\`\`\n\n[View Release](https://github.com/${{ github.repository }}/releases/tag/${GITHUB_REF#refs/tags/})\", \"color\": 5814783}]}" \
+              ${{ secrets.DISCORD_WEBHOOK }}
+          fi
+

@@ -10,7 +10,7 @@ export default function Footer() {
             <span>Invoicer</span>
           </div>
           <p className="footer-text">Self-hosted invoice generator. Built with simplicity and privacy in mind.</p>
-          <p className="footer-copyright">© 2024 Invoicer. All rights reserved.</p>
+          <p className="footer-copyright">© 2026 SphereOps. All rights reserved.</p>
         </div>
       </div>
     </footer>

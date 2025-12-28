@@ -53,10 +53,9 @@ export default function DocsNav({ structure, currentPath }: DocsNavProps) {
     if (item.type === 'file') {
       const isActive = currentPath === item.path.replace('.html', '')
       return (
-        <li key={item.path} className="nav-item">
+        <li key={item.path} className={isActive ? 'nav-item active' : 'nav-item'}>
           <Link
             href={`/docs/${item.path.replace('.html', '')}`}
-            className={`nav-link ${isActive ? 'active' : ''}`}
           >
             {item.title}
           </Link>
