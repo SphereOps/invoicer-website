@@ -98,9 +98,13 @@ jobs:
           fi
           
       - name: Trigger deployment
-        if: ${{ success() && secrets.DEPLOY_WEBHOOK_URL != '' }}
+        if: success()
         run: |
-          echo "Triggering deployment webhook..."
-          curl -f "${{ secrets.DEPLOY_WEBHOOK_URL }}" || echo "Deployment trigger failed, but continuing..."
+          if [ -n "${{ secrets.DEPLOY_WEBHOOK_URL }}" ]; then
+            echo "Triggering deployment webhook..."
+            curl -f "${{ secrets.DEPLOY_WEBHOOK_URL }}" || echo "Deployment trigger failed, but continuing..."
+          else
+            echo "DEPLOY_WEBHOOK_URL not configured, skipping deployment trigger"
+          fi
 
 
