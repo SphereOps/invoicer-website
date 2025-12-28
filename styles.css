@@ -2019,3 +2019,612 @@ html {
     margin: 0 auto;
     padding: 0 2rem;
 }
+
+/* Support Page */
+.support-page {
+    padding: 120px 2rem 100px;
+    background: var(--navy-primary);
+    min-height: 100vh;
+}
+
+.support-hero {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.support-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.support-hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+}
+
+.support-content {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.support-grid {
+    display: grid;
+    grid-template-columns: 1fr 500px;
+    gap: 4rem;
+    align-items: start;
+}
+
+.support-pricing-card {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, var(--navy-secondary) 100%);
+    border: 1px solid var(--accent-blue);
+    border-radius: 16px;
+    padding: 2.5rem;
+    text-align: center;
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.support-pricing-card .pricing-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.support-price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+}
+
+.support-price .price-amount {
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--accent-blue);
+}
+
+.support-price .price-period {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+}
+
+.support-price-description {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+}
+
+.support-services h2,
+.support-benefits h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.service-list {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.service-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--navy-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.service-item:hover {
+    border-color: var(--accent-blue);
+    transform: translateX(4px);
+}
+
+.service-item .service-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    color: var(--accent-blue);
+}
+
+.service-item h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.service-item p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.benefits-list {
+    list-style: none;
+    padding: 0;
+}
+
+.benefits-list li {
+    padding: 0.875rem 0;
+    padding-left: 2rem;
+    position: relative;
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+}
+
+.benefits-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--success);
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.booking-card {
+    background: var(--navy-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2.5rem;
+    position: sticky;
+    top: 100px;
+}
+
+.booking-card h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.booking-card > p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+
+.support-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    background: var(--navy-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.875rem 1rem;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: inherit;
+}
+
+.cost-summary {
+    background: var(--navy-primary);
+    border: 1px solid var(--accent-blue);
+    border-radius: 8px;
+    padding: 1.25rem;
+}
+
+.cost-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.cost-row span:first-child {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+}
+
+.cost-amount {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--accent-blue);
+}
+
+.cost-note {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.form-note {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.5;
+}
+
+.support-alternatives {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--navy-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+}
+
+.support-alternatives h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.support-alternatives > p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.alternatives-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.alternative-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    background: var(--navy-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+}
+
+.alternative-link:hover {
+    border-color: var(--accent-blue);
+    transform: translateX(4px);
+}
+
+.alternative-link svg {
+    width: 20px;
+    height: 20px;
+    color: var(--accent-blue);
+}
+
+/* Changelog Page */
+.changelog-page {
+    padding: 120px 2rem 100px;
+    background: var(--navy-primary);
+    min-height: 100vh;
+}
+
+.changelog-hero {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.changelog-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.changelog-hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.changelog-meta {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.changelog-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    background: var(--navy-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.changelog-link:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+}
+
+.changelog-link svg {
+    width: 16px;
+    height: 16px;
+}
+
+.changelog-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.changelog-version {
+    margin-bottom: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.changelog-version:last-child {
+    border-bottom: none;
+}
+
+.changelog-version.unreleased {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, transparent 100%);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 4rem;
+}
+
+.version-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.version-info {
+    flex: 1;
+}
+
+.version-number {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.version-badge {
+    display: inline-block;
+    padding: 0.375rem 0.875rem;
+    background: var(--accent-blue);
+    color: white;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.version-badge.unreleased-badge {
+    background: var(--warning);
+}
+
+.version-date {
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+.version-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    background: var(--navy-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.version-link:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+}
+
+.version-link svg {
+    width: 14px;
+    height: 14px;
+}
+
+.version-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.changelog-section {
+    background: var(--navy-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.changelog-section.section-added {
+    border-left: 3px solid var(--success);
+}
+
+.changelog-section.section-changed {
+    border-left: 3px solid var(--accent-blue);
+}
+
+.changelog-section.section-fixed {
+    border-left: 3px solid var(--success);
+}
+
+.changelog-section.section-deprecated {
+    border-left: 3px solid var(--warning);
+}
+
+.changelog-section.section-removed {
+    border-left: 3px solid var(--error);
+}
+
+.changelog-section.section-security {
+    border-left: 3px solid var(--warning);
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.section-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--accent-blue);
+}
+
+.section-header h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.section-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.section-items li {
+    padding: 0.625rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.section-items li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+    font-weight: 700;
+}
+
+.changelog-footer {
+    margin-top: 4rem;
+}
+
+.changelog-cta {
+    background: var(--navy-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 3rem;
+    text-align: center;
+}
+
+.changelog-cta h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.changelog-cta p {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Responsive for Support and Changelog */
+@media (max-width: 1100px) {
+    .support-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .booking-card {
+        position: relative;
+        top: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .support-hero h1,
+    .changelog-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .support-hero-subtitle,
+    .changelog-hero-subtitle {
+        font-size: 1.05rem;
+    }
+    
+    .support-pricing-card {
+        padding: 2rem;
+    }
+    
+    .support-price .price-amount {
+        font-size: 3rem;
+    }
+    
+    .service-list {
+        gap: 1rem;
+    }
+    
+    .version-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .version-number {
+        font-size: 1.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .changelog-cta {
+        padding: 2rem;
+    }
+}

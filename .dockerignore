@@ -7,4 +7,5 @@ npm-debug.log
 *.md
 !docs/**/*.md
 !README.md
+!CHANGELOG.md
 .env*.local

@@ -53,18 +53,54 @@ jobs:
           cache-to: type=gha,mode=max
           platforms: linux/amd64,linux/arm64
           
+      - name: Extract version from tag
+        id: version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+        
+      - name: Extract changelog for this version
+        id: changelog
+        run: |
+          VERSION="${GITHUB_REF#refs/tags/}"
+          
+          # Extract the section for this version from CHANGELOG.md
+          if [ -f CHANGELOG.md ]; then
+            # Try to extract the Unreleased section (most common case)
+            CHANGELOG_CONTENT=$(sed -n '/## \[Unreleased\]/,/## \[/p' CHANGELOG.md | sed '$d' | tail -n +2)
+            
+            # If Unreleased is empty, try to get the specific version
+            if [ -z "$CHANGELOG_CONTENT" ]; then
+              CHANGELOG_CONTENT=$(sed -n "/## \[$VERSION\]/,/## \[/p" CHANGELOG.md | sed '$d' | tail -n +2)
+            fi
+            
+            # If still empty, use a default message
+            if [ -z "$CHANGELOG_CONTENT" ]; then
+              CHANGELOG_CONTENT="See CHANGELOG.md for details."
+            fi
+            
+            # Save to output
+            echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
+            echo "$CHANGELOG_CONTENT" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          else
+            echo "CHANGELOG=No changelog available." >> $GITHUB_OUTPUT
+          fi
+          
       - name: Generate release notes
         id: release_notes
         run: |
           echo "## 🚀 What's Changed" > release_notes.md
           echo "" >> release_notes.md
-          echo "### Docker Images" >> release_notes.md
+          echo "${{ steps.changelog.outputs.CHANGELOG }}" >> release_notes.md
+          echo "" >> release_notes.md
+          echo "---" >> release_notes.md
+          echo "" >> release_notes.md
+          echo "### 🐳 Docker Images" >> release_notes.md
           echo "" >> release_notes.md
           echo '```bash' >> release_notes.md
           echo "docker pull ${{ env.IMAGE_NAME }}:${GITHUB_REF#refs/tags/}" >> release_notes.md
           echo '```' >> release_notes.md
           echo "" >> release_notes.md
-          echo "### Quick Start" >> release_notes.md
+          echo "### 🚀 Quick Start" >> release_notes.md
           echo "" >> release_notes.md
           echo '```bash' >> release_notes.md
           echo "docker run -p 3000:3000 ${{ env.IMAGE_NAME }}:${GITHUB_REF#refs/tags/}" >> release_notes.md
@@ -74,9 +110,9 @@ jobs:
           echo "- linux/amd64 (x86_64)" >> release_notes.md
           echo "- linux/arm64 (ARM)" >> release_notes.md
           echo "" >> release_notes.md
-          echo "### Support" >> release_notes.md
-          echo "- 💬 Join our [Discord Community](https://discord.gg/6mzgrSaTCz)" >> release_notes.md
-          echo "- 📖 Read the [Documentation](https://github.com/sphereops/invoicer#readme)" >> release_notes.md
+          echo "### 💬 Support" >> release_notes.md
+          echo "- Join our [Discord Community](https://discord.gg/6mzgrSaTCz)" >> release_notes.md
+          echo "- Read the [Documentation](https://github.com/sphereops/invoicer#readme)" >> release_notes.md
           
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
@@ -92,8 +128,29 @@ jobs:
         if: success()
         run: |
           if [ -n "${{ secrets.DISCORD_WEBHOOK }}" ]; then
+            # Prepare changelog for Discord (truncate if too long)
+            CHANGELOG="${{ steps.changelog.outputs.CHANGELOG }}"
+            CHANGELOG_SHORT=$(echo "$CHANGELOG" | head -c 500)
+            
+            # Build Discord embed
             curl -H "Content-Type: application/json" \
-              -d "{\"embeds\": [{\"title\": \"🎉 New Invoicer Release: ${GITHUB_REF#refs/tags/}\", \"description\": \"A new version of Invoicer has been released!\n\n\`\`\`docker pull ${{ env.IMAGE_NAME }}:${GITHUB_REF#refs/tags/}\`\`\`\n\n[View Release](https://github.com/${{ github.repository }}/releases/tag/${GITHUB_REF#refs/tags/})\", \"color\": 5814783}]}" \
+              -d "{\"embeds\": [{
+                \"title\": \"🎉 New Invoicer Release: ${GITHUB_REF#refs/tags/}\",
+                \"description\": \"$CHANGELOG_SHORT\",
+                \"color\": 5814783,
+                \"fields\": [
+                  {
+                    \"name\": \"🐳 Docker Image\",
+                    \"value\": \"\`\`\`docker pull ${{ env.IMAGE_NAME }}:${GITHUB_REF#refs/tags/}\`\`\`\",
+                    \"inline\": false
+                  },
+                  {
+                    \"name\": \"📖 Links\",
+                    \"value\": \"[View Release](https://github.com/${{ github.repository }}/releases/tag/${GITHUB_REF#refs/tags/}) • [Documentation](https://github.com/sphereops/invoicer#readme)\",
+                    \"inline\": false
+                  }
+                ]
+              }]}" \
               ${{ secrets.DISCORD_WEBHOOK }}
           fi
           
