@@ -96,4 +96,11 @@ jobs:
               -d "{\"embeds\": [{\"title\": \"🎉 New Invoicer Release: ${GITHUB_REF#refs/tags/}\", \"description\": \"A new version of Invoicer has been released!\n\n\`\`\`docker pull ${{ env.IMAGE_NAME }}:${GITHUB_REF#refs/tags/}\`\`\`\n\n[View Release](https://github.com/${{ github.repository }}/releases/tag/${GITHUB_REF#refs/tags/})\", \"color\": 5814783}]}" \
               ${{ secrets.DISCORD_WEBHOOK }}
           fi
+          
+      - name: Trigger deployment
+        if: success() && secrets.DEPLOY_WEBHOOK_URL != ''
+        run: |
+          echo "Triggering deployment webhook..."
+          curl -f "${{ secrets.DEPLOY_WEBHOOK_URL }}" || echo "Deployment trigger failed, but continuing..."
+
 
